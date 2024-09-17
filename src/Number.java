@@ -59,12 +59,12 @@ public class Number {
      *         {@code false}, если не удается инициализировать массив (переопределение размера).
      */
     public static boolean SetSize(int size){
-        if (ArraySize == 0){
-            ArraySize = size;
+        ArraySize = size;
+        if (ArraySize <= 0) {
+            return false;
+        }else{
             ArrayNumbers = new Number[ArraySize];
             return true;
-        }else{
-            return false;
         }
     }
 

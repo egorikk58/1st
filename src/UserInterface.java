@@ -23,22 +23,49 @@ public class UserInterface {
      * Сообщает об ошибке, если не удалось установить размер.
      */
     public void GetArraySize(){
-            System.out.println("Введите N");
-            int n = _in.nextInt();
-            boolean SetNums = Number.SetSize(n);
-            if (SetNums) {
-                System.out.println("Введите числа");
-            } else {
-                System.out.println("Произошла ошибка");
+        System.out.println("Лабораторная работа 1 Андреев Костиневич 23ВП2");
+        System.out.println("Ввести с консоли n целых чисел и поместить их в массив. На консоль вывести простые числа.");
+        System.out.println("Введите количество чисел в массиве:");
+        boolean validinput = false;
+        while (!validinput){
+            try{
+                String n = _in.nextLine();
+                int size = Integer.parseInt(n);
+                if(size>0){
+                    validinput = Number.SetSize(size);
+                    if (validinput) {
+                        System.out.println("Введите числа");
+                        break;
+                    }
+                }else {
+                    System.out.println("Размер массива не может быть нулевым или отрицательным");
+                }
+            }
+            catch(Exception ex){
+                System.out.println("Значение размера массива может быть только положительным целым числом. Введите заново");
+                validinput = false;
             }
         }
+    }
 
     /**
      * Считывает числа, которые ввел пользователь, и добавляет в массив.
      */
     public void GetNumbers(){
         for (int i = 0;i<Number.ArraySize;i++){
-            Number.ArrayNumbers[i] = new Number(_in.nextInt());
+            boolean validinput = false;
+            while (!validinput){
+                try{
+                    String n = _in.nextLine();
+                    int number = Integer.parseInt(n);
+                    Number num = new Number(number);
+                    Number.ArrayNumbers[i] = num;
+                    validinput = true;
+                }
+                catch(Exception ex){
+                    System.out.println("Вы ввели нецелое значение. Введите заново");
+                }
+            }
         }
     }
 
