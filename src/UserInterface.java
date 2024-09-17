@@ -43,7 +43,6 @@ public class UserInterface {
             }
             catch(Exception ex){
                 System.out.println("Значение размера массива может быть только положительным целым числом. Введите заново");
-                validinput = false;
             }
         }
     }
@@ -88,13 +87,8 @@ public class UserInterface {
      * пользователя о необходимости ввести целое число.
      */
     public void Run(){
-        try {
-            GetArraySize();
-            GetNumbers();
-            PrintSimple();
-        }
-        catch (Exception ex){
-            System.out.println("Произошла ошибка, введите int значение");
-        }
+        GetArraySize();
+        GetNumbers();
+        PrintSimple();
     }
 }
